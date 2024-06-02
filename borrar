@@ -1,0 +1,3 @@
+echo "borrando ficheros de respaldo...."
+rm *~
+rm *.log

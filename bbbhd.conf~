@@ -1,0 +1,26 @@
+# Lista de recursos 
+ag.sources  = fuente 
+ag.sinks  =  sum
+ag.channels  =  can1
+
+# Fuente  
+ag.sources.fuente.type  =  exec
+ag.sources.fuente.command  =  tail -F /home/hadoop/comandos.txt
+ag.sources.fuente.channels  =  can1
+
+# Canal
+ag.channels.can1.type = memory
+ag.channels.can1.capacity = 1000
+ag.channels.can1.transactionCapacity = 100
+
+# Sumidero 
+ag.sinks.sum.type = hdfs  
+ag.sinks.sum.hdfs.path  = hdfs://sqoop1/bbb_datos/
+ag.sinks.sum.hdfs.fileType = DataStream 
+ag.sinks.sum.hdfs.writeFormat = Text
+ag.sinks.sum.hdfs.rollSize = 0
+ag.sinks.sum.hdfs.rollCount = 1000
+ag.sinks.sum.hdfs.batchSize = 100
+ag.sinks.sum.channel  = can1  
+
+
